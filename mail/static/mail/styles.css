@@ -1,0 +1,10 @@
+textarea {
+    min-height: 400px;
+}
+
+.box_format:hover{
+    cursor: pointer;
+    outline-color: white;
+
+}
+
