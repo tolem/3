@@ -87,7 +87,7 @@ function open_email(id){
 
   let email_box = document.createElement('div');
   email_box.classList.add("div_toggle");
-  // email_box.innerHTML = "Hello";
+
 
   fetch(`/emails/${id}`)
 .then(response => response.json())
@@ -102,6 +102,7 @@ function open_email(id){
     const body = document.createElement('p');
     replyBtn.classList.add('btn','btn-sm', 'btn-outline-primary');
 
+    // quick fix using tild string template
     message.innerHTML = `<p><strong>From:</strong> ${email.sender} </br> <strong>To:</strong> ${email.recipients[0]
 } </br> <strong>Subject:</strong> ${email.subject} </br> <strong>Timestamp:</strong> ${email.timestamp}</p>`
     replyBtn.innerHTML = 'Reply'
@@ -136,7 +137,7 @@ function view_emails(mail){
         // console.log(emails);
         emails.forEach(msg => {
           //  container for emails
-          const container = document.createElement('div')
+          const container = document.createElement('div');
            const box =  document.createElement('div');
            const archive_btn = document.createElement('button');
 
@@ -231,10 +232,10 @@ function load_mailbox(mailbox) {
 function send_email(event){
    event.preventDefault()
   // sends a POST request to the /emails route
-  let recipients = document.querySelector('#compose-recipients').value
-  let subject = document.querySelector('#compose-subject').value
-  let body =  document.querySelector('#compose-body').value
-  console.log(recipients, subject, body)
+  let recipients = document.querySelector('#compose-recipients').value;
+  let subject = document.querySelector('#compose-subject').value;
+  let body =  document.querySelector('#compose-body').value;
+  console.log(recipients, subject, body);
 
   fetch('/emails', {
     method: 'POST',
@@ -257,6 +258,3 @@ function send_email(event){
   return 
 
 }
-
-
-
